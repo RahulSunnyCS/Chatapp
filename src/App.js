@@ -4,6 +4,15 @@ import ChatInput from './components/ChatInput';
 import axios from 'axios';
 import './App.css'
 
+export const scrollToElement = (id, margin = 50) => {
+  const $elementWithId = document.querySelector(`#${id}`);
+  if ($elementWithId) {
+    const yCoordinate =
+      $elementWithId.getBoundingClientRect().y + window.scrollY;
+    window.scrollTo(0, yCoordinate - margin);
+  }
+};
+
 function App() {
   const [messages, setMessages] = useState([]);
 
@@ -51,7 +60,7 @@ function App() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="border border-gray-300 rounded p-4 mb-4 max-h-96 overflow-y-auto">
+      <div className="border border-gray-300 rounded p-4 mb-4 max-h-96 overflow-y-auto chat-output-container">
         <ChatOutput messages={messages} />
       </div>
       <div className='chat-input'>

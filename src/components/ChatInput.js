@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "react-chat-elements/dist/main.css"
 import { MessageBox, Input, Button } from "react-chat-elements"
+import "./ChatInput.css"
 
 function ChatInput({ onMessageSubmit }) {
   const [message, setMessage] = useState('');
@@ -13,16 +14,16 @@ function ChatInput({ onMessageSubmit }) {
   };
 
   const handleChange = (event) => {
-    setMessage(event?.target?.value || message)
+    setMessage(event?.target?.value)
   }
 
   return (
     <>
-      <Input
+      <textarea
+        className='message-input'
         placeholder="Type here..."
-        // multiline={true}
-        onChange={handleChange}
         value={message}
+        onChange={handleChange}
       />
       <Button text={"Send"} onClick={handleSubmit} title="Send" />
     </>

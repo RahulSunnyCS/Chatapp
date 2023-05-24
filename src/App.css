@@ -13,3 +13,8 @@
   display: flex;
   min-width: calc(100vw - 100px);
 }
+
+.chat-output-container {
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+}
